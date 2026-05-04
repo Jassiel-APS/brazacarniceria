@@ -1,0 +1,159 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║        CAMBIOS IMPORTANTES ANTES DE PUBLICAR - BRAZA LANDING PAGE             ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+🔴 CRÍTICO - SIN ESTO NO FUNCIONA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. NÚMERO DE WHATSAPP
+   ├─ Archivo: src/utils/whatsapp.js (línea 4)
+   ├─ Cambiar: 573001234567 → TU NÚMERO SIN +
+   ├─ Formato: Código país + número (ej: 573001234567, 552133334444)
+   ├─ Buscar Y REEMPLAZAR en index.html: 573001234567
+   └─ ⚠️ Todos los botones usan este número
+
+2. DOMINIO REAL
+   ├─ Buscar: https://www.tudominio.com
+   ├─ Reemplazar en:
+   │  ├─ index.html (meta tags, Open Graph, Structured Data)
+   │  ├─ public/robots.txt
+   │  ├─ public/sitemap.xml
+   │  ├─ vercel.json
+   │  ├─ netlify.toml
+   │  ├─ nginx.conf
+   │  └─ .htaccess
+   └─ ⚠️ Verifica TODOS los archivos
+
+
+🟡 IMPORTANTE - RECOMENDADO CAMBIAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3. EMAIL DE CONTACTO
+   ├─ Buscar: ventas@brazacarne.com
+   ├─ Reemplazar por: TU EMAIL REAL
+   ├─ En archivos:
+   │  ├─ index.html (sección contacto y footer)
+   │  ├─ public/humans.txt
+   │  └─ public/.well-known/security.txt
+   └─ ⚠️ Los usuarios verán este email
+
+4. UBICACIÓN FÍSICA
+   ├─ En index.html, busca:
+   │  └─ "Calle principal #123, Tu ciudad, Departamento"
+   ├─ Reemplaza con tu ubicación real
+   └─ ⚠️ Los clientes podrían visitarte
+
+5. TELÉFONO
+   ├─ Busca en index.html:
+   │  └─ "+57 300 123 4567" (teléfono general)
+   └─ Reemplaza con tu teléfono real
+
+6. REDES SOCIALES
+   ├─ En footer de index.html, busca:
+   │  ├─ https://www.facebook.com/brazacarne
+   │  └─ https://www.instagram.com/brazacarne
+   └─ Reemplaza con tus URLs reales
+
+
+🟢 OPCIONAL - MEJORA LA EXPERIENCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+7. FAVICON PERSONALIZADO
+   ├─ Archivo: public/favicon.svg
+   ├─ Reemplaza con tu logo en SVG
+   └─ ℹ️ Se muestra en pestaña del navegador
+
+8. IMÁGENES
+   ├─ Carpeta: public/images/
+   ├─ Agrega imágenes de carne, parrilla, etc.
+   ├─ Reemplaza emojis (🥩, 🔥, 🍖) con imágenes reales
+   └─ ℹ️ Mejora atractivo visual
+
+9. COLORES PERSONALIZADOS
+   ├─ Archivo: src/styles/tokens.css
+   ├─ Personaliza:
+   │  ├─ --color-gold: Dorado (destacado)
+   │  ├─ --color-fire: Fuego/Naranja (botones)
+   │  └─ --color-meat: Rojo carne
+   └─ ℹ️ Adapta al branding de tu empresa
+
+10. META DESCRIPTION
+    ├─ En index.html, línea 6
+    ├─ Cambiar por: Descripción SEO atractiva
+    └─ ℹ️ Aparece en resultados de Google
+
+
+📋 CHECKLIST RÁPIDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+☐ Número WhatsApp actualizado y testado
+☐ Dominio correcto en todos los archivos
+☐ Email de contacto real
+☐ Ubicación física
+☐ Teléfono correcto
+☐ Redes sociales actualizadas
+☐ Compilé: npm run build
+☐ Probé en móvil y desktop
+☐ Subí a Vercel, Netlify o servidor propio
+
+
+📂 ARCHIVOS MÁS IMPORTANTES PARA EDITAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EDITAR PRIMERO:
+  1. src/utils/whatsapp.js ............ Número WhatsApp
+  2. index.html ....................... Todo lo demás
+  3. src/data/products.js ............. Productos
+
+EDITAR SEGUNDO:
+  4. src/styles/tokens.css ........... Colores
+  5. public/favicon.svg .............. Logo/Favicon
+
+EDITAR SI PUBLICAS EN:
+  6. vercel.json (Vercel)
+  7. netlify.toml (Netlify)
+  8. nginx.conf (servidor Nginx)
+  9. .htaccess (servidor Apache)
+
+
+🚀 PASOS FINALES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Haz todos los cambios
+2. Prueba localmente: npm run dev
+3. Compila: npm run build
+4. Prueba la build: npm run preview
+5. Sube a Vercel/Netlify o tu servidor
+6. Prueba en producción
+7. ¡Listo para recibir cotizaciones! 🎉
+
+
+📞 AYUDA RÁPIDA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿Cómo instalar?
+  npm install
+  npm run dev
+
+¿Cómo compilar?
+  npm run build
+
+¿Cómo probar en producción?
+  npm run preview
+
+¿WhatsApp no abre?
+  ✓ Verifica formato: 573001234567 (sin + ni espacios)
+  ✓ Prueba en navegador: https://wa.me/573001234567
+
+¿Los cambios no aparecen?
+  ✓ Limpia cache: Ctrl+Shift+Del
+  ✓ Recompila: npm run build
+
+¿Más ayuda?
+  ✓ Ver README.md (documentación completa)
+  ✓ Ver QUICK-START.md (guía rápida)
+
+
+════════════════════════════════════════════════════════════════════════════════
+                    ¡BUENA SUERTE CON TU LANDING! 🥩
+════════════════════════════════════════════════════════════════════════════════

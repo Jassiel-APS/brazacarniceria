@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /admin/
+Disallow: /*.pdf$
+
+Sitemap: https://www.tudominio.com/sitemap.xml
+
+# Cambiar https://www.tudominio.com por tu dominio real

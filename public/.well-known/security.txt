@@ -1,0 +1,14 @@
+Contact: security@tudominio.com
+Expires: 2024-12-31T23:59:59.000Z
+Preferred-Languages: es, en
+Canonical: https://www.tudominio.com/.well-known/security.txt
+
+# Política de seguridad
+Para reportar vulnerabilidades de seguridad, envía un correo a security@tudominio.com
+Por favor proporciona:
+- Descripción del problema
+- Pasos para reproducirlo
+- Impacto potencial
+- Tu información de contacto
+
+No publiques vulnerabilidades públicamente antes de que las hayamos resuelto.

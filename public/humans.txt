@@ -1,0 +1,16 @@
+This website is created by Braza - Distribuidora de Carne Fresca
+
+/* TEAM */
+Desarrollado por: [Tu nombre o empresa]
+Email: dev@tuempresa.com
+Website: https://www.tudominio.com
+
+/* THANKS */
+A los proveedores de carne fresca y al equipo que hace posible esta operación.
+
+/* SITE */
+Last updated: 2024-01-15
+Standards: HTML5, CSS3, JavaScript (ES6+)
+Components: Responsive Design, Accessibility (WCAG), SEO Optimized
+
+Dominio: https://www.tudominio.com

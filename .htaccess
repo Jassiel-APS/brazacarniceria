@@ -1,0 +1,131 @@
+# BRAZA LANDING PAGE - Configuración Apache
+
+# ========================================
+# HABILITAR MOD REWRITE
+# ========================================
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirigir www a no-www (opcional)
+  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  # RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+
+  # Redirigir HTTP a HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # SPA Routing - Enviar todas las peticiones a index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+
+  # Denegar acceso a archivos sensibles
+  RewriteRule "^\.git" - [F]
+  RewriteRule "^\.env" - [F]
+  RewriteRule "^\.htaccess" - [F]
+</IfModule>
+
+# ========================================
+# COMPRESIÓN GZIP
+# ========================================
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE font/truetype font/opentype
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject image/svg+xml
+</IfModule>
+
+# ========================================
+# HEADERS DE SEGURIDAD
+# ========================================
+<IfModule mod_headers.c>
+  # Prevenir clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # Prevenir MIME type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Protección contra XSS
+  Header always set X-XSS-Protection "1; mode=block"
+  
+  # Política de referencia
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Política de permisos
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  
+  # Content Security Policy
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://wa.me; frame-ancestors 'none'"
+  
+  # HSTS
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>
+
+# ========================================
+# CACHE
+# ========================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Assets estáticos - 1 año
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/font-truetype "access plus 1 year"
+  ExpiresByType application/font-opentype "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType application/x-font-opentype "access plus 1 year"
+  ExpiresByType application/x-font-woff "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  
+  # HTML - 1 hora
+  ExpiresByType text/html "access plus 1 hour"
+  
+  # XML y manifest - 1 hora
+  ExpiresByType text/xml "access plus 1 hour"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType application/json "access plus 1 hour"
+  ExpiresByType application/webmanifest+json "access plus 1 hour"
+</IfModule>
+
+# ========================================
+# DENEGAR ACCESO A ARCHIVOS SENSIBLES
+# ========================================
+<FilesMatch "(\.|_)(env|git|htaccess|htpasswd|log|sql|config)$|\.map$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# ========================================
+# MIME TYPES
+# ========================================
+<IfModule mod_mime.c>
+  AddType application/webmanifest+json .webmanifest
+  AddType application/json .json
+  AddType video/mp4 .mp4
+  AddType video/webm .webm
+  AddType image/svg+xml .svg
+  AddCharset utf-8 .html .css .js .xml .json .webmanifest
+</IfModule>
+
+# ========================================
+# DISABLER DE ETags (opcional)
+# ========================================
+# <IfModule mod_headers.c>
+#   Header unset ETag
+#   FileETag None
+# </IfModule>
